@@ -15,8 +15,9 @@ public class ChangePass {
         Scanner scan = new Scanner(System.in);
         int id = Integer.valueOf(scan.nextLine());
 
-        System.out.println("昔のパスワードを入力");
-        String oldPassword = scan.nextLine();
+
+            System.out.println("昔のパスワードを入力");
+            String oldPassword = scan.nextLine();
 
         System.out.println("新しいのパスワードを入力");
         String newPassword1 = scan.nextLine();
@@ -45,9 +46,6 @@ public class ChangePass {
                  flag=0;
             }
         }
-
-        System.out.println("先生の名前を入力");
-        String name = scan.nextLine();
 
         try {
             LoginDAO dao = new LoginDAO();

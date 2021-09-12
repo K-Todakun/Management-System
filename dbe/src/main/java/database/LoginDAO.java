@@ -29,8 +29,8 @@ public class LoginDAO {
         int n = 0;
         try (Connection conn = DriverManager.getConnection(URL,USER_NAME,USER_PASS);
              PreparedStatement stmt = conn.prepareStatement(sql)){
-            stmt.setInt(1,id);
-            stmt.setString(2,password);
+            stmt.setString(1,password);
+            stmt.setInt(2,id);
             n = stmt.executeUpdate();
         }
         return n;
