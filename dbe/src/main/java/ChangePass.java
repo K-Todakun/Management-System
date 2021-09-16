@@ -4,6 +4,7 @@ import database.Point;
 import database.PointDAO;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -15,9 +16,20 @@ public class ChangePass {
         Scanner scan = new Scanner(System.in);
         int id = Integer.valueOf(scan.nextLine());
 
+        System.out.println("昔のパスワードを入力");
+        String oldPassword = scan.nextLine();
 
-            System.out.println("昔のパスワードを入力");
-            String oldPassword = scan.nextLine();
+        LoginDAO dao = new LoginDAO();
+        List<Login> passList = new ArrayList<Login>();
+        try {
+            passList = dao.selectPassword(id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        for (Login password : passList){
+          String checkOldPawssword = password.getPassword();
+        }
+
 
         System.out.println("新しいのパスワードを入力");
         String newPassword1 = scan.nextLine();
@@ -48,7 +60,7 @@ public class ChangePass {
         }
 
         try {
-            LoginDAO dao = new LoginDAO();
+          //  LoginDAO dao = new LoginDAO();
             int logins = dao.updatePassword(id,newPassword1);
             System.out.println(logins);
         }catch (SQLException e){

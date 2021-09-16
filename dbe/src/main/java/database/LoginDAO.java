@@ -36,14 +36,13 @@ public class LoginDAO {
         return n;
     }
 
-    public List<Login> selectPassword(int id,String password) throws SQLException{
+    public List<Login> selectPassword(int id) throws SQLException{
         List<Login> returning = new ArrayList<Login>();
         String sql = "select パスワード from ログイン情報 where ログインID = ?";
 
         try(Connection conn = DriverManager.getConnection(URL, USER_NAME, USER_PASS);
             PreparedStatement stmt = conn.prepareStatement(sql)){
             stmt.setInt(1, id);
-            stmt.setString(2,password);
             ResultSet results = stmt.executeQuery();
             while(results.next()){
                 int col1 = results.getInt("ログインID");
