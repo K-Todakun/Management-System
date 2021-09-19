@@ -1,15 +1,13 @@
 package database;
 
-public class Login {
+public class Pass {
 
     private  int loginID;
     private  String password;
     private  String Tname;
 
-    public Login(int loginID, String password, String tname) {
-        this.loginID = loginID;
+    public Pass(String password) {
         this.password = password;
-        Tname = tname;
     }
 
     public int getLoginID() {

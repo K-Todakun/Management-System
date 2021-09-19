@@ -36,8 +36,8 @@ public class LoginDAO {
         return n;
     }
 
-    public List<Login> selectPassword(int id) throws SQLException{
-        List<Login> returning = new ArrayList<Login>();
+    public List<Pass> selectPassword(int id) throws SQLException{
+        List<Pass> returning = new ArrayList<Pass>();
         String sql = "select パスワード from ログイン情報 where ログインID = ?";
 
         try(Connection conn = DriverManager.getConnection(URL, USER_NAME, USER_PASS);
@@ -45,10 +45,8 @@ public class LoginDAO {
             stmt.setInt(1, id);
             ResultSet results = stmt.executeQuery();
             while(results.next()){
-                int col1 = results.getInt("ログインID");
-                String col2 = results.getString("パスワード");
-                String col3 = results.getString("先生の名前");
-                Login login = new Login(col1, col2, col3);
+                String col1 = results.getString("パスワード");
+                Pass login = new Pass(col1);
                 returning.add(login);
             }
         }

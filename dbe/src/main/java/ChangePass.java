@@ -1,7 +1,5 @@
-import database.Login;
+import database.Pass;
 import database.LoginDAO;
-import database.Point;
-import database.PointDAO;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -20,13 +18,13 @@ public class ChangePass {
         String oldPassword = scan.nextLine();
 
         LoginDAO dao = new LoginDAO();
-        List<Login> passList = new ArrayList<Login>();
+        List<Pass> passList = new ArrayList<Pass>();
         try {
             passList = dao.selectPassword(id);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        for (Login password : passList){
+        for (Pass password : passList){
           String checkOldPawssword = password.getPassword();
         }
 
